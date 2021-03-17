@@ -5,9 +5,12 @@
 </template>
 
 <script>
+import emitter from '@/mixins/emitter'
+
 export default {
     inheritAttrs: false,
     name: 'VInput',
+    mixins: [emitter],
     props: {
         type: {
             type: String,
@@ -22,7 +25,8 @@ export default {
         onInput (e) {
             this.$emit('input', e.target.value)
             // 验证
-            this.$parent.$emit('validate')
+            // this.$parent.$emit('validate')
+            this.dispatch('VFormItem', 'validate')
         }
     }
 }

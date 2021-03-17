@@ -8,9 +8,12 @@
 
 <script>
 import Validator from 'async-validator'
+import emitter from '@/mixins/emitter'
 
 export default {
     name: 'VFormItem',
+    componentName: 'VFormItem',
+    mixins: [emitter],
     inject: ['form'],
     props: {
         label: {
@@ -26,6 +29,10 @@ export default {
         this.$on('validate', () => {
             this.validate()
         })
+        this.prop && this.dispatch('VForm', 'el.form.addField', [this])
+    },
+    beforeDestroy () {
+        this.dispatch('VForm', 'el.form.removeField', [this])
     },
     data () {
         return {
