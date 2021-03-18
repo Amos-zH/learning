@@ -24,8 +24,6 @@
 import VInput from '@/components/form/VInput'
 import VFormItem from '../components/form/VFormItem.vue'
 import VForm from '../components/form/VForm.vue'
-import Notice from '@/components/Notice/Notice'
-import create from '@/utils/create'
 
 export default {
     name: 'Home',
@@ -55,12 +53,11 @@ export default {
                 } else {
                     console.log('登录失败！')
                 }
-                const msg = create(Notice, {
+                this.$notice({
                     title: '通知',
                     message: valid ? '登录成功！' : '登录失败！',
                     duration: 1000
                 })
-                msg.show()
             })
         }
     }

@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import Notice from '@/components/Notice/Notice'
 
 function create (component, props) {
     // 创建一个Vue新实例
@@ -10,6 +11,7 @@ function create (component, props) {
     }).$mount() // 执行挂载函数，但未指定挂载目标，表示只执行初始化工作
     // 手动挂载，将生成的dom放入body中
     document.body.appendChild(vm.$el)
+    console.log('vm.$el: ', vm.$el)
     // 拿到组件实例
     const comp = vm.$children[0]
     // 添加组件销毁方法
@@ -37,4 +39,18 @@ function create (component, props) {
 //     return comp
 // }
 
-export default create
+const noticePlugin = {
+    install (Vue) {
+        Vue.prototype.$notice = function (options) {
+            const comp = create(Notice, options)
+            comp.show()
+            return comp
+        }
+    }
+}
+
+// if (typeof window !== 'undefined' && window.Vue) {
+//     window.Vue.use(noticePlugin)
+// }
+
+export default noticePlugin
