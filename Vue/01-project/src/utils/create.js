@@ -20,4 +20,21 @@ function create (component, props) {
     return comp
 }
 
+// function create2 (component, props) {
+//     // 获取构造函数
+//     const Cost = Vue.extend(component)
+//     // 获取组件实例
+//     const comp = new Cost({ propsData: props })
+//     // 挂载
+//     comp.$mount()
+//     // 手动挂载，将生成的dom放入body中
+//     document.body.appendChild(comp.$el)
+//     // 添加组件销毁方法
+//     comp.remove = () => {
+//         document.body.removeChild(comp.$el)
+//         comp.$destroy()
+//     }
+//     return comp
+// }
+
 export default create
