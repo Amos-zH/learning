@@ -3,10 +3,21 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
+      <button @click="routerPush">push about</button>
     </div>
     <router-view/>
   </div>
 </template>
+
+<script>
+export default {
+    methods: {
+        routerPush () {
+            this.$router.push('about')
+        }
+    },
+}
+</script>
 
 <style lang="less">
 #app {
