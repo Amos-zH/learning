@@ -15,7 +15,7 @@ export default {
         routerPush () {
             this.$router.push('about')
         }
-    },
+    }
 }
 </script>
 
